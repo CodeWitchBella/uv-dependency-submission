@@ -121,6 +121,7 @@ def main():
         "X-GitHub-Api-Version: 2022-11-28",
         f"/repos/{os.environ['GITHUB_REPOSITORY']}/dependency-graph/snapshots",
         "--jq",
+        ".",
         "--input",
         "-",
     ]
