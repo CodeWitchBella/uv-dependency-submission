@@ -80,7 +80,7 @@ def retrying_check_output(cmd: list[str], *, input: str) -> str:
         except subprocess.CalledProcessError as e:
             last_err = e
             print("==")
-            print(e.output)
+            print(json.loads(e.output))
             print("==")
             print()
 
