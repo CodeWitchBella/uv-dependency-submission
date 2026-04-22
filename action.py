@@ -74,7 +74,7 @@ def retrying_check_output(cmd: list[str], *, input: str) -> str:
             sleep(sleep_for)
             sleep_for = min(30, sleep_for * 2)
         try:
-            output = subprocess.check_output(cmd, input=input, stderr=subprocess.STDOUT, universal_newlines=True)
+            output = subprocess.check_output(cmd, input=input, stderr=subprocess.PIPE, universal_newlines=True)
             print("Dependency submission successful!")
             return output
         except subprocess.CalledProcessError as e:
@@ -124,7 +124,6 @@ def main():
         f"/repos/{os.environ['GITHUB_REPOSITORY']}/dependency-graph/snapshots",
         "--jq",
         ".",
-        "--silent",
         "--input",
         "-",
     ]
