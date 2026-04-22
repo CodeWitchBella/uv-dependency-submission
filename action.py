@@ -79,10 +79,7 @@ def retrying_check_output(cmd: list[str], *, input: str) -> str:
             return output
         except subprocess.CalledProcessError as e:
             last_err = e
-            print("==")
             print(json.loads(e.output))
-            print("==")
-            print()
 
     print(f"{RED}Command failed, no more retries{END}")
     raise last_err
@@ -126,6 +123,7 @@ def main():
         f"/repos/{os.environ['GITHUB_REPOSITORY']}/dependency-graph/snapshots",
         "--jq",
         ".",
+        "--silent",
         "--input",
         "-",
     ]
