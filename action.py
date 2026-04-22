@@ -69,7 +69,7 @@ def retrying_check_output(cmd: list[str], *, input: str) -> str:
     sleep_for = 1
     last_err: Exception = ValueError("Invalid number of retries")
     retries = 5
-    retryable_statuses = ('500', '502')
+    retryable_statuses = ("500", "502")
     for i in range(retries):
         if i != 0:
             print(f"{RED}Command failed, retrying in {sleep_for} seconds ({i + 1}/{retries})...{END}")
